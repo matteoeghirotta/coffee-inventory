@@ -41,7 +41,16 @@ INSTALLED_APPS = [
     'inventory.apps.InventoryConfig',
     'capsules.apps.CapsulesConfig',
     'product.apps.ProductConfig',
+    'import_export',
 ]
+
+# Applications settings
+
+IMPORT_EXPORT_USE_TRANSACTIONS = True
+ROOT_URLCONF = 'coffee_project.urls'
+
+
+# Middleware
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -53,12 +62,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'coffee_project.urls'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,3 +129,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
